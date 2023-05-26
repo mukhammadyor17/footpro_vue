@@ -1,1 +1,26 @@
 // app global css in SCSS form
+.rounded-xs {
+  border-radius: 6px;
+}
+.rounded-sm {
+  border-radius: 8px;
+}
+.rounded-md {
+  border-radius: 10px;
+}
+.rounded {
+  border-radius: 12px;
+}
+.rounded-lg {
+  border-radius: 16px;
+}
+.rounded-xl {
+  border-radius: 20px;
+}
+.rounded-2xl {
+  border-radius: 28px;
+}
+
+.rounded-2xl {
+  border-radius: 36px;
+}
