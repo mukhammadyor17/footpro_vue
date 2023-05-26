@@ -5,9 +5,3 @@
 </template>
 
 <script setup></script>
-
-<style lang="scss" scoped>
-div {
-  background: $dark;
-}
-</style>
