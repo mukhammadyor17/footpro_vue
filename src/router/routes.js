@@ -10,6 +10,22 @@ const routes = [
       {
         path: "stadium",
         component: () => import("pages/user/Stadium.vue")
+      },
+      {
+        path: "stadium/:id",
+        component: () => import("pages/user/StadiumDetail.vue")
+      },
+      {
+        path: "help",
+        component: () => import("pages/user/Help.vue")
+      },
+      {
+        path: "admin",
+        component: () => import("pages/admin/Admin.vue")
+      },
+      {
+        path: "super",
+        component: () => import("pages/admin/SuperAdmin.vue")
       }
     ]
   },
