@@ -1,5 +1,5 @@
 <template>
-  <q-layout>
+  <q-layout class="auth-layout">
     <q-page-container>
       <router-view></router-view>
     </q-page-container>
@@ -8,4 +8,9 @@
 
 <script setup></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.auth-layout {
+  background: url("../assets/footBgDark.jpg") center;
+  background-size: cover;
+}
+</style>
