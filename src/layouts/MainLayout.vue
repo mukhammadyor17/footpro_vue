@@ -20,11 +20,7 @@
     </q-drawer>
 
     <q-page-container class="bg-green-2">
-      <router-view v-slot="{ Component }">
-        <transition name="route" mode="out-in" appear>
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <router-view></router-view>
     </q-page-container>
   </q-layout>
 </template>
@@ -62,23 +58,10 @@ function toggleLeftDrawer() {
 </script>
 
 <style lang="scss">
-.route-enter-from {
-  opacity: 0;
-  transform: translateY(1px);
-}
-.route-enter-active,
-.route-leave-active {
-  transition: all 0.2s ease-out;
-}
-.route-leave-to {
-  opacity: 0;
-  transform: translateY(1px);
-}
-
 .main-layout .q-drawer {
   max-width: 100px;
   width: 100%;
-  padding: 12px;
+  padding: 16px;
 }
 
 .logo {
