@@ -9,3 +9,16 @@ $positive: #21ba45;
 $negative: #c10015;
 $info: #31ccec;
 $warning: #f2c037;
+
+$green-1: #eaeee5;
+$green-2: #cadec8;
+$green-3: #aadcb6;
+$green-4: #7abd87;
+$green-5: #3e7e55;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
