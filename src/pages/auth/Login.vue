@@ -13,6 +13,7 @@
         outlined
         dense
         placeholder="Username"
+        v-model="email"
       />
       <q-input
         borderless
@@ -23,13 +24,33 @@
         outlined
         dense
         placeholder="Password"
+        v-model="password"
       />
-      <q-btn color="green-5" to="/" no-caps class="full-width"> Войти </q-btn>
+      <q-btn color="green-5" @click="loginHandler" no-caps class="full-width">
+        Войти
+      </q-btn>
     </div>
   </q-page>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useAuthStore } from "../../stores/auth";
+
+const authStore = useAuthStore();
+
+const email = ref("admin@mail.ru");
+const password = ref("admin123");
+
+const loginHandler = async () => {
+  const payload = {
+    email: email.value,
+    password: password.value,
+  };
+
+  await authStore.login(payload);
+};
+</script>
 
 <style lang="scss" scoped>
 .login-form {
