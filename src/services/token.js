@@ -7,6 +7,15 @@ const TokenService = {
   },
   remove() {
     localStorage.removeItem("token");
+  },
+  getUser() {
+    return JSON.parse(localStorage.getItem("user"));
+  },
+  saveUser(user) {
+    localStorage.setItem("user", JSON.stringify(user));
+  },
+  removeUser() {
+    localStorage.removeItem("user");
   }
 };
 
