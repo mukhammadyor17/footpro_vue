@@ -8,7 +8,7 @@ import router from "src/router";
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
-    role: "super"
+    role: null
   }),
   getters: {},
   actions: {
@@ -16,13 +16,19 @@ export const useAuthStore = defineStore("auth", {
       try {
         const response = await AuthService.login(payload);
         this.user = response.data;
+        this.role = "super";
         notify.show("Вы успешно вошли!", "positive");
         TokenService.save(response.data.token);
-        router.push("/");
+        router.push("/super");
       } catch (error) {
         notify.show("Ошибка при авторизации!", "negative");
         console.error(error);
       }
+    },
+    logout() {
+      TokenService.remove();
+      this.user = null;
+      this.role = null;
     }
   }
 });
