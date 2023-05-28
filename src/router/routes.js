@@ -26,6 +26,10 @@ const routes = [
       {
         path: "super",
         component: () => import("pages/admin/SuperAdmin.vue")
+      },
+      {
+        path: "create",
+        component: () => import("pages/admin/Create.vue")
       }
     ]
   },
