@@ -4,7 +4,7 @@
       <q-toolbar class="justify-between">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <div class="flex gap-4" v-if="authStore.role === 'super'">
+        <div class="flex gap-4" v-if="user">
           <router-link
             class="text-green-5"
             v-for="link in superLinks"
@@ -16,7 +16,7 @@
             {{ link.name }}
           </router-link>
         </div>
-        <div class="flex gap-4" v-if="authStore.role === 'admin'">
+        <div class="flex gap-4" v-else>
           <router-link
             class="text-green-5"
             v-for="link in adminLinks"
@@ -66,8 +66,11 @@
 <script setup>
 import { ref } from "vue";
 import { useAuthStore } from "src/stores/auth";
+import TokenService from "src/services/token";
 import router from "src/router";
 const authStore = useAuthStore();
+
+const user = TokenService.getUser();
 
 const links = [
   {
@@ -99,11 +102,15 @@ const adminLinks = [
 const superLinks = [
   {
     path: "/super",
-    name: "Все стадионы",
+    name: "Стадионы",
+  },
+  {
+    path: "/users",
+    name: "Пользователи",
   },
   {
     path: "/create",
-    name: "Создать стадион",
+    name: "Создать ",
   },
 ];
 
