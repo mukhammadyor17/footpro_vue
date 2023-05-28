@@ -28,6 +28,10 @@ const routes = [
         component: () => import("pages/admin/SuperAdmin.vue")
       },
       {
+        path: "users",
+        component: () => import("pages/admin/Users.vue")
+      },
+      {
         path: "create",
         component: () => import("pages/admin/Create.vue")
       }
