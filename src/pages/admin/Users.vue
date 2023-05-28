@@ -14,4 +14,8 @@
 import PageTitle from "src/components/ui/PageTitle.vue";
 import MainCard from "src/components/ui/MainCard.vue";
 import UsersTable from "src/components/table/UsersTable.vue";
+import { useUserStore } from "src/stores/user";
+
+const userStore = useUserStore();
+userStore.getUsers();
 </script>
