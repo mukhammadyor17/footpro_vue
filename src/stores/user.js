@@ -10,7 +10,7 @@ export const useUserStore = defineStore("user", {
     async getUsers() {
       try {
         const response = await UserService.get();
-        console.log(response);
+        this.users = response.data;
       } catch (error) {
         console.error(error);
       }
