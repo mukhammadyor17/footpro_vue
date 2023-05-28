@@ -1,5 +1,34 @@
 <template>
   <q-layout view="lHh lpR lFf" class="main-layout">
+    <q-header elevated class="bg-white text-green-5">
+      <q-toolbar class="justify-end" v-if="authStore.role === 'super'">
+        <div class="flex gap-4">
+          <router-link
+            class="text-green-5"
+            v-for="link in superLinks"
+            :key="link.name"
+            :to="link.path"
+            exact-active-class="active"
+            active-class="active"
+          >
+            {{ link.name }}
+          </router-link>
+        </div>
+        <div class="flex gap-4" v-if="authStore.role === 'admin'">
+          <router-link
+            class="text-green-5"
+            v-for="link in adminLinks"
+            :key="link.name"
+            :to="link.path"
+            exact-active-class="active"
+            active-class="active"
+          >
+            {{ link.name }}
+          </router-link>
+        </div>
+      </q-toolbar>
+    </q-header>
+
     <q-drawer v-model="leftDrawerOpen" side="left" bordered>
       <div class="logo">
         <img src="../assets/Logo.png" alt="FootPro" />
@@ -27,6 +56,8 @@
 
 <script setup>
 import { ref } from "vue";
+import { useAuthStore } from "src/stores/auth";
+const authStore = useAuthStore();
 
 const links = [
   {
@@ -51,6 +82,28 @@ const links = [
   },
 ];
 
+const adminLinks = [
+  {
+    path: "/admin",
+    name: "Мой Стадион",
+  },
+  {
+    path: "/create",
+    name: "Расписание",
+  },
+];
+
+const superLinks = [
+  {
+    path: "/super",
+    name: "Все стадионы",
+  },
+  {
+    path: "/create",
+    name: "Создать стадион",
+  },
+];
+
 const leftDrawerOpen = ref(true);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
@@ -58,10 +111,16 @@ function toggleLeftDrawer() {
 </script>
 
 <style lang="scss">
-.main-layout .q-drawer {
-  max-width: 100px;
-  width: 100%;
-  padding: 16px;
+.main-layout {
+  .q-drawer {
+    max-width: 100px;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .q-header {
+    left: 100px !important;
+  }
 }
 
 .logo {
