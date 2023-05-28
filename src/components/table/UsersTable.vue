@@ -69,3 +69,15 @@ const data = [
   },
 ];
 </script>
+
+<style lang="scss">
+.q-table {
+  thead {
+    background: $green-2;
+  }
+
+  tbody tr:hover {
+    background: $green-1;
+  }
+}
+</style>
