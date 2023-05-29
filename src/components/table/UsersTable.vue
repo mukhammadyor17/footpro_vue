@@ -7,6 +7,7 @@
     bordered
     hide-bottom
     class="rounded"
+    :pagination="{ rowsPerPage: 0 }"
   />
 </template>
 
