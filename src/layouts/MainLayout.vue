@@ -6,7 +6,7 @@
 
         <div class="flex gap-4" v-if="user">
           <router-link
-            class="text-green-3"
+            class="text-grey-5"
             v-for="link in superLinks"
             :key="link.name"
             :to="link.path"
@@ -18,7 +18,7 @@
         </div>
         <div class="flex gap-4" v-else>
           <router-link
-            class="text-green-3"
+            class="text-grey-5"
             v-for="link in adminLinks"
             :key="link.name"
             :to="link.path"
@@ -58,13 +58,14 @@
     </q-drawer>
 
     <q-page-container class="bg-green-2">
-      <router-view />
+      <suspense>
+        <router-view />
+      </suspense>
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
-import MainSpinner from "src/components/ui/MainSpinner.vue";
 import { ref } from "vue";
 import { useAuthStore } from "src/stores/auth";
 import TokenService from "src/services/token";
