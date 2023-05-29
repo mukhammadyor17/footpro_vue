@@ -31,5 +31,11 @@ const column = [
     field: "description",
     align: "left",
   },
+  {
+    name: "actions",
+    label: "Actions",
+    field: "actions",
+    align: "right",
+  },
 ];
 </script>

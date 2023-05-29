@@ -37,5 +37,11 @@ const column = [
     label: "Is Blocked",
     field: "isBlocked",
   },
+  {
+    name: "actions",
+    label: "Actions",
+    field: "actions",
+    align: "right",
+  },
 ];
 </script>
