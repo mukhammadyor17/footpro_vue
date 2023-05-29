@@ -6,7 +6,7 @@
 
         <div class="flex gap-4" v-if="user">
           <router-link
-            class="text-green-5"
+            class="text-green-3"
             v-for="link in superLinks"
             :key="link.name"
             :to="link.path"
@@ -18,7 +18,7 @@
         </div>
         <div class="flex gap-4" v-else>
           <router-link
-            class="text-green-5"
+            class="text-green-3"
             v-for="link in adminLinks"
             :key="link.name"
             :to="link.path"
@@ -155,5 +155,11 @@ function toggleLeftDrawer() {
 .link__item.active {
   background: $green-5;
   color: white !important;
+}
+
+.q-header {
+  .active {
+    color: $green-5 !important;
+  }
 }
 </style>
