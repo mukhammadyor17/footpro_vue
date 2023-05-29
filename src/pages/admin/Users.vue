@@ -32,12 +32,6 @@ const column = [
     align: "left",
   },
   {
-    name: "displayName",
-    label: "Display name",
-    field: "displayName",
-    align: "left",
-  },
-  {
     name: "isBlocked",
     align: "center",
     label: "Is Blocked",
