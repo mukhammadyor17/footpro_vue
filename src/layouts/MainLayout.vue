@@ -64,10 +64,12 @@
 </template>
 
 <script setup>
+import MainSpinner from "src/components/ui/MainSpinner.vue";
 import { ref } from "vue";
 import { useAuthStore } from "src/stores/auth";
 import TokenService from "src/services/token";
 import router from "src/router";
+
 const authStore = useAuthStore();
 
 const user = TokenService.getUser();

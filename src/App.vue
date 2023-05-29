@@ -1,7 +1,7 @@
 <template>
-  <suspense>
+  <Suspense>
     <router-view />
-  </suspense>
+  </Suspense>
 </template>
 
 <script setup></script>
