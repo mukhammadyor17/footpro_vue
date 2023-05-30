@@ -15,6 +15,9 @@ const UserService = {
   },
   unBlock(id) {
     return api.get("/Auth/UnLockUser");
+  },
+  createUserStadium(payload) {
+    return api.post("/UserStadium/Create", { payload });
   }
 };
 

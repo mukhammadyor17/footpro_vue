@@ -19,7 +19,15 @@ export const useUserStore = defineStore("user", {
     async createUser(payload) {
       try {
         const response = await UserService.create(payload);
-        console.log(response.data);
+        notify.show("Success", "positive");
+      } catch (error) {
+        notify.show("Error", "negative");
+        console.error(error);
+      }
+    },
+    async createUserStadium(payload) {
+      try {
+        const response = await UserService.createUserStadium(payload);
         notify.show("Success", "positive");
       } catch (error) {
         notify.show("Error", "negative");

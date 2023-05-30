@@ -1,8 +1,5 @@
 <template>
   <q-page class="q-pa-md">
-    <main-card class="q-mb-md">
-      <page-title> Create users and stadiums </page-title>
-    </main-card>
     <div class="flex gap-6 no-wrap q-mb-md">
       <main-card class="flex-1">
         <h6 class="q-mt-auto q-mb-md text-body1">Create user</h6>
@@ -77,23 +74,27 @@
           v-model="userStadium.userId"
           :options="userStore.users"
           label="User"
-          option-label="username"
-          option-value="id"
+          :option-label="(item) => item.username"
+          :option-value="(item) => item.id"
           map-options
+          emit-value
         />
         <q-select
           dense
           outlined
           color="green-5"
           v-model="userStadium.stadiumId"
-          :options="userStore.stadium"
+          :options="stadiumStore.stadium"
           label="Stadium"
-          option-label="name"
-          option-value="id"
+          :option-label="(item) => item.name"
+          :option-value="(item) => item.id"
           map-options
+          emit-value
         />
         <div class="q-mt-md flex justify-end">
-          <q-btn no-caps color="green-5"> Create </q-btn>
+          <q-btn no-caps color="green-5" @click="createUserStadium">
+            Create
+          </q-btn>
         </div>
       </main-card>
     </div>
@@ -102,7 +103,6 @@
 
 <script setup>
 import MainCard from "src/components/ui/MainCard.vue";
-import PageTitle from "src/components/ui/PageTitle.vue";
 import { reactive } from "vue";
 import { useUserStore } from "src/stores/user";
 import { useStadiumStore } from "src/stores/stadium";
@@ -140,4 +140,10 @@ const userStadium = reactive({
   stadiumId: "",
   userId: "",
 });
+const createUserStadium = async () => {
+  const payload = {
+    ...userStadium,
+  };
+  await userStore.createUserStadium(payload);
+};
 </script>
