@@ -5,19 +5,62 @@
     </main-card>
 
     <main-card v-if="stadiumStore.stadium">
-      <base-table :row="stadiumStore.stadium" :column="column" />
+      <base-table
+        :row="stadiumStore.stadium"
+        :column="column"
+        @showEditModal="showEditModal"
+        @showRemoveConfirm="showRemoveConfirm"
+      />
     </main-card>
+
+    <edit-modal v-model="isEditModalOpen">
+      <template v-slot:body>
+        <q-input
+          outlined
+          dense
+          color="green-5"
+          class="q-mb-md"
+          label="Name"
+          v-model="stadiumItem.name"
+        />
+        <q-input
+          outlined
+          dense
+          color="green-5"
+          label="Description"
+          v-model="stadiumItem.description"
+        />
+      </template>
+      <template v-slot:footer>
+        <q-btn color="green-5" no-caps> Save </q-btn>
+      </template>
+    </edit-modal>
+
+    <remove-confirm
+      v-model="isRemoveConfirmOpen"
+      @removeHandler="removeStadium"
+    />
   </q-page>
 </template>
 
 <script setup>
+import { reactive, ref } from "vue";
+import { useStadiumStore } from "src/stores/stadium";
 import PageTitle from "src/components/ui/PageTitle.vue";
 import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
-import { useStadiumStore } from "src/stores/stadium";
-const stadiumStore = useStadiumStore();
+import EditModal from "src/components/modal/EditModal.vue";
+import RemoveConfirm from "src/components/modal/RemoveConfirm.vue";
 
+const stadiumStore = useStadiumStore();
 stadiumStore.get();
+
+let stadiumItem = reactive({
+  id: "",
+  name: "",
+  description: "",
+});
+
 const column = [
   {
     name: "name",
@@ -38,4 +81,20 @@ const column = [
     align: "right",
   },
 ];
+
+const isEditModalOpen = ref(false);
+const showEditModal = (item) => {
+  stadiumItem = item;
+  isEditModalOpen.value = !isEditModalOpen.value;
+};
+
+const isRemoveConfirmOpen = ref(false);
+const showRemoveConfirm = (id) => {
+  console.log(id);
+  isRemoveConfirmOpen.value = !isRemoveConfirmOpen.value;
+};
+
+const removeStadium = () => {
+  console.log("call remove stadium handler");
+};
 </script>
