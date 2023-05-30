@@ -16,8 +16,8 @@
             dense
             size="sm"
             icon="edit"
-            @click="editRow(row)"
-            color="blue-5"
+            @click="$emit('showEditModal', row)"
+            color="green-5"
             class="q-ml-xs"
           />
           <q-btn
@@ -25,7 +25,7 @@
             size="sm"
             icon="delete"
             color="red-5"
-            @click="deleteRow(row)"
+            @click="$emit('showRemoveConfirm', row.id)"
             class="q-ml-xs"
           />
         </div>
@@ -36,12 +36,6 @@
 
 <script setup>
 const props = defineProps(["row", "column"]);
-const editRow = (row) => {
-  console.log(row);
-};
-const deleteRow = (row) => {
-  console.log(row);
-};
 </script>
 
 <style lang="scss">
