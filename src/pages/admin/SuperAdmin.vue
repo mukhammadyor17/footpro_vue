@@ -1,9 +1,5 @@
 <template>
   <q-page class="q-pa-md">
-    <main-card class="q-mb-md">
-      <page-title>Super Admin Page</page-title>
-    </main-card>
-
     <main-card v-if="stadiumStore.stadium">
       <base-table
         :row="stadiumStore.stadium"
@@ -46,7 +42,6 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { useStadiumStore } from "src/stores/stadium";
-import PageTitle from "src/components/ui/PageTitle.vue";
 import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
 import EditModal from "src/components/modal/EditModal.vue";

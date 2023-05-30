@@ -11,14 +11,14 @@
   >
     <template v-slot:body-cell-actions="{ row }">
       <td>
-        <div class="flex justify-end">
+        <div class="flex justify-end no-wrap">
           <q-btn
             dense
             size="sm"
             icon="edit"
             @click="$emit('showEditModal', row)"
             color="green-5"
-            class="q-ml-xs"
+            class="q-mr-sm"
           />
           <q-btn
             dense
@@ -26,7 +26,6 @@
             icon="delete"
             color="red-5"
             @click="$emit('showRemoveConfirm', row)"
-            class="q-ml-xs"
           />
         </div>
       </td>
