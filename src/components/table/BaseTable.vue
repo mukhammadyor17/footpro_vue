@@ -25,7 +25,7 @@
             size="sm"
             icon="delete"
             color="red-5"
-            @click="$emit('showRemoveConfirm', row.id)"
+            @click="$emit('showRemoveConfirm', row)"
             class="q-ml-xs"
           />
         </div>

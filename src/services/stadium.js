@@ -6,6 +6,12 @@ const StadiumService = {
   },
   create(payload) {
     return api.post("/Stadium/Create", payload);
+  },
+  update(payload) {
+    return api.put("/Stadium/Update", payload);
+  },
+  delete(params) {
+    return api.delete("/Stadium/Delete", { params });
   }
 };
 

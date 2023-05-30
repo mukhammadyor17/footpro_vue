@@ -32,7 +32,7 @@
         />
       </template>
       <template v-slot:footer>
-        <q-btn color="green-5" no-caps> Save </q-btn>
+        <q-btn color="green-5" no-caps @click="update"> Save </q-btn>
       </template>
     </edit-modal>
 
@@ -87,14 +87,20 @@ const showEditModal = (item) => {
   stadiumItem = item;
   isEditModalOpen.value = !isEditModalOpen.value;
 };
-
-const isRemoveConfirmOpen = ref(false);
-const showRemoveConfirm = (id) => {
-  console.log(id);
-  isRemoveConfirmOpen.value = !isRemoveConfirmOpen.value;
+const update = async () => {
+  await stadiumStore.updateStadium({ ...stadiumItem });
+  await stadiumStore.get();
+  isEditModalOpen.value = false;
 };
 
-const removeStadium = () => {
-  console.log("call remove stadium handler");
+const isRemoveConfirmOpen = ref(false);
+const showRemoveConfirm = (row) => {
+  stadiumItem = row;
+  isRemoveConfirmOpen.value = !isRemoveConfirmOpen.value;
+};
+const removeStadium = async () => {
+  await stadiumStore.removeStadium({ id: stadiumItem.id });
+  await stadiumStore.get();
+  isRemoveConfirmOpen.value = false;
 };
 </script>

@@ -20,7 +20,24 @@ export const useStadiumStore = defineStore("stadium", {
       try {
         const response = await StadiumService.create(payload);
         notify.show("Success", "positive");
-        console.log(response.data);
+      } catch (error) {
+        notify.show("Error", "negative");
+        console.error(error);
+      }
+    },
+    async updateStadium(payload) {
+      try {
+        const response = await StadiumService.update(payload);
+        notify.show("Success", "positive");
+      } catch (error) {
+        notify.show("Error", "negative");
+        console.error(error);
+      }
+    },
+    async removeStadium(payload) {
+      try {
+        const response = await StadiumService.delete(payload);
+        notify.show("Success", "positive");
       } catch (error) {
         notify.show("Error", "negative");
         console.error(error);
