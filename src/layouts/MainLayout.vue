@@ -58,15 +58,17 @@
     </q-drawer>
 
     <q-page-container class="bg-green-2">
-      <suspense>
-        <router-view />
-      </suspense>
+      <RouterView name="default" v-slot="{ Component, route }">
+        <Suspense timeout="0">
+          <component :is="Component" :key="route.path" />
+        </Suspense>
+      </RouterView>
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useAuthStore } from "src/stores/auth";
 import TokenService from "src/services/token";
 import router from "src/router";
@@ -125,6 +127,11 @@ function logoutHandler() {
 }
 
 const leftDrawerOpen = ref(true);
+onMounted(() => {
+  if (window.screen.width <= 1023) {
+    leftDrawerOpen.value = false;
+  }
+});
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
