@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hhh lpR lfr">
     <q-header bordered class="bg-white text-green-5">
-      <q-toolbar class="justify-between">
+      <q-toolbar class="justify-between q-px-lg">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <div class="flex gap-4" v-if="user">
