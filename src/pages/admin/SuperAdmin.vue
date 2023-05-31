@@ -48,7 +48,7 @@ import EditModal from "src/components/modal/EditModal.vue";
 import RemoveConfirm from "src/components/modal/RemoveConfirm.vue";
 
 const stadiumStore = useStadiumStore();
-stadiumStore.get();
+stadiumStore.getStadium();
 
 let stadiumItem = reactive({
   id: "",
@@ -84,7 +84,7 @@ const showEditModal = (item) => {
 };
 const update = async () => {
   await stadiumStore.updateStadium({ ...stadiumItem });
-  await stadiumStore.get();
+  await stadiumStore.getStadium();
   isEditModalOpen.value = false;
 };
 
@@ -95,7 +95,7 @@ const showRemoveConfirm = (row) => {
 };
 const removeStadium = async () => {
   await stadiumStore.removeStadium({ id: stadiumItem.id });
-  await stadiumStore.get();
+  await stadiumStore.getStadium();
   isRemoveConfirmOpen.value = false;
 };
 </script>

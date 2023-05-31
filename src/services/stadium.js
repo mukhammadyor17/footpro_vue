@@ -1,7 +1,7 @@
 import api from "./api";
 
 const StadiumService = {
-  get() {
+  getStadium() {
     return api.get("/Stadium/GetAll");
   },
   create(payload) {

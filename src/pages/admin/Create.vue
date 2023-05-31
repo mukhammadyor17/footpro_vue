@@ -110,8 +110,8 @@ import { useStadiumStore } from "src/stores/stadium";
 const userStore = useUserStore();
 const stadiumStore = useStadiumStore();
 
-stadiumStore.get();
 userStore.getUsers();
+stadiumStore.getStadium();
 
 const user = reactive({
   email: "",
@@ -123,6 +123,9 @@ const createUser = async () => {
     ...user,
   };
   await userStore.createUser(payload);
+  user.email = "";
+  user.password = "";
+  user.displayName = "";
 };
 
 const stadium = reactive({
@@ -134,6 +137,8 @@ const createStadium = async () => {
     ...stadium,
   };
   await stadiumStore.createStadium(payload);
+  stadium.name = "";
+  stadium.description = "";
 };
 
 const userStadium = reactive({
@@ -145,5 +150,7 @@ const createUserStadium = async () => {
     ...userStadium,
   };
   await userStore.createUserStadium(payload);
+  userStadium.userId = "";
+  userStadium.stadiumId = "";
 };
 </script>

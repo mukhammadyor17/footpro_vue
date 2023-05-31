@@ -8,9 +8,9 @@ export const useStadiumStore = defineStore("stadium", {
   }),
   getters: {},
   actions: {
-    async get() {
+    async getStadium() {
       try {
-        const response = await StadiumService.get();
+        const response = await StadiumService.getStadium();
         this.stadium = response.data;
       } catch (error) {
         console.error(error);
