@@ -58,11 +58,18 @@
     </q-drawer>
 
     <q-page-container class="bg-green-2">
-      <RouterView name="default" v-slot="{ Component, route }">
-        <Suspense timeout="0">
-          <component :is="Component" :key="route.path" />
-        </Suspense>
-      </RouterView>
+      <router-view v-slot="{ Component }">
+        <suspense timeout="0">
+          <!-- Default -->
+          <template #default>
+            <component :is="Component" />
+          </template>
+          <!-- Loading -->
+          <template #fallback>
+            <div>Loading...</div>
+          </template>
+        </suspense>
+      </router-view>
     </q-page-container>
   </q-layout>
 </template>
