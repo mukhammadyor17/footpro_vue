@@ -7,8 +7,10 @@ const UserService = {
   create(data) {
     return api.post("/Auth/Register", data);
   },
-  update({ id, data }) {
-    return api.get("/Auth/UpdateUser", data);
+  update({ id, email, displayName }) {
+    return api.put(
+      `/Auth/UpdateUser/?userId=${id}&email=${email}&displayName=${displayName}`
+    );
   },
   block(id) {
     return api.get("/Auth/LockUser");

@@ -33,6 +33,15 @@ export const useUserStore = defineStore("user", {
         notify.show("Error", "negative");
         console.error(error);
       }
+    },
+    async updateUser(payload) {
+      try {
+        const response = await UserService.update(payload);
+        notify.show("Success", "positive");
+      } catch (error) {
+        notify.show("Error", "negative");
+        console.error(error);
+      }
     }
   }
 });

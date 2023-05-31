@@ -3,13 +3,13 @@
     <main-card v-if="stadiumStore.stadium">
       <base-table
         :row="stadiumStore.stadium"
-        :column="column"
+        :column="col"
         @showEditModal="showEditModal"
         @showRemoveConfirm="showRemoveConfirm"
       />
     </main-card>
 
-    <edit-modal v-model="isEditModalOpen">
+    <edit-modal v-model="isEditModalOpen" @updateHandler="update">
       <template v-slot:body>
         <q-input
           outlined
@@ -27,9 +27,6 @@
           v-model="stadiumItem.description"
         />
       </template>
-      <template v-slot:footer>
-        <q-btn color="green-5" no-caps @click="update"> Save </q-btn>
-      </template>
     </edit-modal>
 
     <remove-confirm
@@ -46,6 +43,7 @@ import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
 import EditModal from "src/components/modal/EditModal.vue";
 import RemoveConfirm from "src/components/modal/RemoveConfirm.vue";
+import { stadiumColumn } from "/src/constants/columns.js";
 
 const stadiumStore = useStadiumStore();
 stadiumStore.getStadium();
@@ -56,26 +54,7 @@ let stadiumItem = reactive({
   description: "",
 });
 
-const column = [
-  {
-    name: "name",
-    label: "Name",
-    field: "name",
-    align: "left",
-  },
-  {
-    name: "description",
-    label: "Description",
-    field: "description",
-    align: "left",
-  },
-  {
-    name: "actions",
-    label: "Actions",
-    field: "actions",
-    align: "right",
-  },
-];
+const col = stadiumColumn;
 
 const isEditModalOpen = ref(false);
 const showEditModal = (item) => {

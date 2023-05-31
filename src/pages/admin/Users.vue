@@ -1,8 +1,31 @@
 <template>
   <q-page class="q-pa-md">
     <main-card v-if="userStore.users">
-      <base-table :row="userStore.users" :column="column" />
+      <base-table
+        :row="userStore.users"
+        :column="col"
+        @showEditModal="showEditModal"
+      />
     </main-card>
+    <edit-modal v-model="isEditModalOpen" @updateHandler="updateUser">
+      <template v-slot:body>
+        <q-input
+          outlined
+          dense
+          color="green-5"
+          class="q-mb-md"
+          label="Email"
+          v-model="user.email"
+        />
+        <q-input
+          outlined
+          dense
+          color="green-5"
+          label="Display name"
+          v-model="user.displayName"
+        />
+      </template>
+    </edit-modal>
   </q-page>
 </template>
 
@@ -10,33 +33,32 @@
 import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
 import { useUserStore } from "src/stores/user";
+import { userColumn } from "src/constants/columns.js";
+import { reactive, ref } from "vue";
+import EditModal from "src/components/modal/EditModal.vue";
+
+const col = userColumn;
 const userStore = useUserStore();
 userStore.getUsers();
 
-const column = [
-  {
-    name: "username",
-    label: "User name",
-    field: "username",
-    align: "left",
-  },
-  {
-    name: "email",
-    label: "Email",
-    field: "email",
-    align: "left",
-  },
-  {
-    name: "isBlocked",
-    align: "center",
-    label: "Is Blocked",
-    field: "isBlocked",
-  },
-  {
-    name: "actions",
-    label: "Actions",
-    field: "actions",
-    align: "right",
-  },
-];
+let user = reactive({
+  id: "",
+  email: "",
+  displayName: "",
+});
+
+const isEditModalOpen = ref(false);
+const showEditModal = (row) => {
+  user = row;
+  isEditModalOpen.value = !isEditModalOpen.value;
+};
+
+const updateUser = async () => {
+  const payload = {
+    ...user,
+  };
+  await userStore.updateUser(payload);
+  await userStore.getUsers();
+  isEditModalOpen.value = false;
+};
 </script>
