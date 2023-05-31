@@ -14,7 +14,9 @@
       </q-card-section>
 
       <q-card-section class="flex justify-end">
-        <slot name="footer" />
+        <q-btn color="green-5" no-caps @click="$emit('updateHandler')">
+          Save
+        </q-btn>
       </q-card-section>
     </q-card>
   </q-dialog>
