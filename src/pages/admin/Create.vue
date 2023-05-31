@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md">
-    <div class="flex gap-6 no-wrap q-mb-md">
-      <main-card class="flex-1">
+    <div class="flex gap-6 q-mb-md">
+      <main-card class="min-w-300 flex-1">
         <h6 class="q-mt-auto q-mb-md text-body1">Create user</h6>
         <q-input
           borderless
@@ -38,7 +38,7 @@
           <q-btn no-caps color="green-5" @click="createUser"> Create </q-btn>
         </div>
       </main-card>
-      <main-card class="flex-1">
+      <main-card class="min-w-300 flex-1">
         <h6 class="q-mt-auto q-mb-md text-body1">Create stadium</h6>
         <q-input
           borderless
@@ -64,7 +64,7 @@
           <q-btn no-caps color="green-5" @click="createStadium"> Create </q-btn>
         </div>
       </main-card>
-      <main-card class="flex-1">
+      <main-card class="min-w-300 flex-1">
         <h6 class="q-mt-auto q-mb-md text-body1">Add stadium for user</h6>
         <q-select
           dense
