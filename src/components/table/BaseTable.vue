@@ -26,6 +26,7 @@
             icon="delete"
             color="red-5"
             @click="$emit('showRemoveConfirm', row)"
+            v-if="!hideDeleteIcon"
           />
         </div>
       </td>
@@ -34,7 +35,7 @@
 </template>
 
 <script setup>
-const props = defineProps(["row", "column"]);
+const props = defineProps(["row", "column", "hideDeleteIcon"]);
 </script>
 
 <style lang="scss">

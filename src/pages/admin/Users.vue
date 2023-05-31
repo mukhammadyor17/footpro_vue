@@ -1,10 +1,14 @@
 <template>
   <q-page class="q-pa-md">
+    <main-card class="q-mb-md">
+      <page-title> Users page </page-title>
+    </main-card>
     <main-card v-if="userStore.users">
       <base-table
         :row="userStore.users"
         :column="col"
         @showEditModal="showEditModal"
+        :hideDeleteIcon="true"
       />
     </main-card>
     <edit-modal v-model="isEditModalOpen" @updateHandler="updateUser">
@@ -30,12 +34,13 @@
 </template>
 
 <script setup>
-import MainCard from "src/components/ui/MainCard.vue";
-import BaseTable from "src/components/table/BaseTable.vue";
+import { reactive, ref } from "vue";
 import { useUserStore } from "src/stores/user";
 import { userColumn } from "src/constants/columns.js";
-import { reactive, ref } from "vue";
+import MainCard from "src/components/ui/MainCard.vue";
+import BaseTable from "src/components/table/BaseTable.vue";
 import EditModal from "src/components/modal/EditModal.vue";
+import PageTitle from "src/components/ui/PageTitle.vue";
 
 const col = userColumn;
 const userStore = useUserStore();

@@ -1,5 +1,8 @@
 <template>
   <q-page class="q-pa-md">
+    <main-card class="q-mb-md">
+      <page-title> Stadium page</page-title>
+    </main-card>
     <main-card v-if="stadiumStore.stadium">
       <base-table
         :row="stadiumStore.stadium"
@@ -8,7 +11,6 @@
         @showRemoveConfirm="showRemoveConfirm"
       />
     </main-card>
-
     <edit-modal v-model="isEditModalOpen" @updateHandler="update">
       <template v-slot:body>
         <q-input
@@ -39,11 +41,12 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { useStadiumStore } from "src/stores/stadium";
+import { stadiumColumn } from "/src/constants/columns.js";
 import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
 import EditModal from "src/components/modal/EditModal.vue";
 import RemoveConfirm from "src/components/modal/RemoveConfirm.vue";
-import { stadiumColumn } from "/src/constants/columns.js";
+import PageTitle from "src/components/ui/PageTitle.vue";
 
 const stadiumStore = useStadiumStore();
 stadiumStore.getStadium();
