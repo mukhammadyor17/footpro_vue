@@ -31,6 +31,20 @@
         </div>
       </td>
     </template>
+    <template v-slot:body-cell-isBlocked="{ row }">
+      <td>
+        <div class="flex justify-center no-wrap">
+          <q-checkbox
+            color="green-5"
+            v-model="row.isBlocked"
+            @update:model-value="
+              (value, e) =>
+                $emit('changeUserStatus', { isBlocked: value, userId: row.id })
+            "
+          />
+        </div>
+      </td>
+    </template>
   </q-table>
 </template>
 

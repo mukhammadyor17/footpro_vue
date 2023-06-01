@@ -1,15 +1,22 @@
 <template>
   <q-page class="q-pa-md">
     <main-card class="q-mb-md">
-      <page-title> Users page </page-title>
+      <page-title> Users Table </page-title>
     </main-card>
-    <main-card v-if="userStore.users">
+    <main-card class="q-mb-md" v-if="userStore.users">
       <base-table
         :row="userStore.users"
         :column="col"
-        @showEditModal="showEditModal"
         :hideDeleteIcon="true"
+        @showEditModal="showEditModal"
+        @changeUserStatus="changeUserStatus"
       />
+    </main-card>
+    <main-card class="q-mb-md">
+      <page-title> Users Stadium table </page-title>
+    </main-card>
+    <main-card>
+      <base-table />
     </main-card>
     <edit-modal v-model="isEditModalOpen" @updateHandler="updateUser">
       <template v-slot:body>
@@ -65,5 +72,9 @@ const updateUser = async () => {
   await userStore.updateUser(payload);
   await userStore.getUsers();
   isEditModalOpen.value = false;
+};
+
+const changeUserStatus = (row) => {
+  console.log(row);
 };
 </script>
