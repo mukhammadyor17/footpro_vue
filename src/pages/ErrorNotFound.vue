@@ -3,10 +3,10 @@
     class="fullscreen bg-green-5 text-white text-center q-pa-md flex flex-center"
   >
     <div>
-      <div style="font-size: 30vh">
+      <div class="page-title">
         4<q-icon name="sports_soccer" class="ball" />4
       </div>
-      <div class="text-h2" style="opacity: 0.4">Oops. Nothing here...</div>
+      <div class="subtitle" style="opacity: 0.4">Oops. Nothing here...</div>
       <q-btn
         class="q-mt-xl"
         color="white"
@@ -29,6 +29,22 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.page-title {
+  font-size: 30vh;
+
+  @media screen and (max-width: 767px) {
+    font-size: 48px;
+  }
+}
+
+.subtitle {
+  font-size: 48px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 24px;
   }
 }
 

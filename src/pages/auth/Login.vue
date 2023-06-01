@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center q-pa-sm">
     <div class="login-form">
       <h4 class="text-green-5 q-mt-auto text-center q-mb-lg text-weight-bold">
         FootPro.
