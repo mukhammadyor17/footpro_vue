@@ -19,6 +19,7 @@
             @click="$emit('showEditModal', row)"
             color="green-5"
             class="q-mr-sm"
+            v-if="!hideEditIcon"
           />
           <q-btn
             dense
@@ -49,7 +50,7 @@
 </template>
 
 <script setup>
-const props = defineProps(["row", "column", "hideDeleteIcon"]);
+const props = defineProps(["row", "column", "hideDeleteIcon", "hideEditIcon"]);
 </script>
 
 <style lang="scss">

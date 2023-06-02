@@ -7,56 +7,39 @@
       <base-table
         :column="stdCol"
         :row="userStore.userStadium"
-        @showEditModal="showEditModal"
+        :hideEditIcon="true"
+        @showRemoveConfirm="showRemoveConfirm"
       />
     </main-card>
-    <edit-modal v-model="isEditModalOpen" @updateHandler="updateUser">
-      <template v-slot:body>
-        <q-input
-          outlined
-          dense
-          color="green-5"
-          class="q-mb-md"
-          label="Email"
-          v-model="user.email"
-        />
-        <q-input
-          outlined
-          dense
-          color="green-5"
-          label="Display name"
-          v-model="user.displayName"
-        />
-      </template>
-    </edit-modal>
+    <remove-confirm
+      v-model="isRemoveConfirmOpen"
+      @removeHandler="removeHandler"
+    />
   </q-page>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { useUserStore } from "src/stores/user";
 import { userStadiumColumn } from "src/constants/columns.js";
 import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
-import EditModal from "src/components/modal/EditModal.vue";
 import PageTitle from "src/components/ui/PageTitle.vue";
+import RemoveConfirm from "src/components/modal/RemoveConfirm.vue";
 
 const stdCol = userStadiumColumn;
 const userStore = useUserStore();
 userStore.getUSerStadium();
 
-const isEditModalOpen = ref(false);
-const showEditModal = (row) => {
-  user = row;
-  isEditModalOpen.value = !isEditModalOpen.value;
+let userStdId = ref("");
+
+const isRemoveConfirmOpen = ref(false);
+const showRemoveConfirm = (row) => {
+  userStdId.value = row.id;
+  isRemoveConfirmOpen.value = !isRemoveConfirmOpen.value;
 };
 
-const updateUser = async () => {
-  const payload = {
-    ...user,
-  };
-  await userStore.updateUser(payload);
-  await userStore.getUsers();
-  isEditModalOpen.value = false;
+const removeHandler = () => {
+  console.log(userStdId.value);
 };
 </script>

@@ -59,10 +59,10 @@ export const userStadiumColumn = [
     field: "stadiumId",
     align: "left",
   },
-  // {
-  //   name: "actions",
-  //   label: "Actions",
-  //   field: "actions",
-  //   align: "right",
-  // },
+  {
+    name: "actions",
+    label: "Actions",
+    field: "actions",
+    align: "right",
+  },
 ];
