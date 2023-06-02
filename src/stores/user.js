@@ -4,7 +4,8 @@ import UserService from "src/services/user";
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    users: null
+    users: null,
+    userStadium: null,
   }),
   getters: {},
   actions: {
@@ -25,6 +26,15 @@ export const useUserStore = defineStore("user", {
         console.error(error);
       }
     },
+    async updateUser(payload) {
+      try {
+        const response = await UserService.update(payload);
+        notify.show("Success", "positive");
+      } catch (error) {
+        notify.show("Error", "negative");
+        console.error(error);
+      }
+    },
     async createUserStadium(payload) {
       try {
         const response = await UserService.createUserStadium(payload);
@@ -34,14 +44,13 @@ export const useUserStore = defineStore("user", {
         console.error(error);
       }
     },
-    async updateUser(payload) {
+    async getUSerStadium() {
       try {
-        const response = await UserService.update(payload);
-        notify.show("Success", "positive");
+        const response = await UserService.getUserStadium();
+        this.userStadium = response.data;
       } catch (error) {
-        notify.show("Error", "negative");
         console.error(error);
       }
-    }
-  }
+    },
+  },
 });

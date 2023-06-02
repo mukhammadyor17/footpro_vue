@@ -1,7 +1,8 @@
 <template>
   <q-page class="q-pa-md">
-    <main-card class="q-mb-md">
-      <page-title> Stadium page</page-title>
+    <main-card class="q-mb-md flex justify-between">
+      <page-title> Stadium </page-title>
+      <q-btn to="/user-stadium" color="green-5" no-caps> User Stadium </q-btn>
     </main-card>
     <main-card v-if="stadiumStore.stadium">
       <base-table

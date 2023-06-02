@@ -1,7 +1,8 @@
 <template>
   <q-page class="q-pa-md">
-    <main-card class="q-mb-md">
+    <main-card class="q-mb-md flex justify-between">
       <page-title> Users Table </page-title>
+      <q-btn to="/user-stadium" color="green-5" no-caps> User Stadium </q-btn>
     </main-card>
     <main-card class="q-mb-md" v-if="userStore.users">
       <base-table
@@ -11,12 +12,6 @@
         @showEditModal="showEditModal"
         @changeUserStatus="changeUserStatus"
       />
-    </main-card>
-    <main-card class="q-mb-md">
-      <page-title> Users Stadium table </page-title>
-    </main-card>
-    <main-card>
-      <base-table />
     </main-card>
     <edit-modal v-model="isEditModalOpen" @updateHandler="updateUser">
       <template v-slot:body>
@@ -43,7 +38,7 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { useUserStore } from "src/stores/user";
-import { userColumn } from "src/constants/columns.js";
+import { userColumn, userStadiumColumn } from "src/constants/columns.js";
 import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
 import EditModal from "src/components/modal/EditModal.vue";
@@ -52,6 +47,7 @@ import PageTitle from "src/components/ui/PageTitle.vue";
 const col = userColumn;
 const userStore = useUserStore();
 userStore.getUsers();
+userStore.getUSerStadium();
 
 let user = reactive({
   id: "",

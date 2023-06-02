@@ -20,7 +20,10 @@ const UserService = {
   },
   createUserStadium(payload) {
     return api.post("/UserStadium/Create", payload);
-  }
+  },
+  getUserStadium() {
+    return api.get("/UserStadium/GetAll");
+  },
 };
 
 export default UserService;

@@ -3,26 +3,26 @@ export const userColumn = [
     name: "username",
     label: "User name",
     field: "username",
-    align: "left"
+    align: "left",
   },
   {
     name: "email",
     label: "Email",
     field: "email",
-    align: "left"
+    align: "left",
   },
   {
     name: "isBlocked",
     align: "center",
     label: "Is Blocked",
-    field: "isBlocked"
+    field: "isBlocked",
   },
   {
     name: "actions",
     label: "Actions",
     field: "actions",
-    align: "right"
-  }
+    align: "right",
+  },
 ];
 
 export const stadiumColumn = [
@@ -30,18 +30,39 @@ export const stadiumColumn = [
     name: "name",
     label: "Name",
     field: "name",
-    align: "left"
+    align: "left",
   },
   {
     name: "description",
     label: "Description",
     field: "description",
-    align: "left"
+    align: "left",
   },
   {
     name: "actions",
     label: "Actions",
     field: "actions",
-    align: "right"
-  }
+    align: "right",
+  },
+];
+
+export const userStadiumColumn = [
+  {
+    name: "userId",
+    label: "User",
+    field: "userId",
+    align: "left",
+  },
+  {
+    name: "stadiumId",
+    label: "Stadium",
+    field: "stadiumId",
+    align: "left",
+  },
+  // {
+  //   name: "actions",
+  //   label: "Actions",
+  //   field: "actions",
+  //   align: "right",
+  // },
 ];

@@ -12,14 +12,8 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { notify } from "src/boot/notify";
 import MainCard from "src/components/ui/MainCard.vue";
 import PageTitle from "src/components/ui/PageTitle.vue";
-
-onMounted(() => {
-  notify.show("hello", "positive");
-});
 </script>
 
 <style lang="scss" scoped></style>
