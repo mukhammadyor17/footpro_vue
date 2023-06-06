@@ -4,7 +4,7 @@
       <q-toolbar class="justify-between q-px-lg">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <div class="flex gap-4" v-if="user.role === 'SuperAdmin'">
+        <div class="flex gap-4">
           <router-link
             class="text-grey-5"
             v-for="link in superLinks"
@@ -16,7 +16,7 @@
             {{ link.name }}
           </router-link>
         </div>
-        <div class="flex gap-4" v-if="user.role === 'Admin'">
+        <div class="flex gap-4" v-if="false">
           <router-link
             class="text-grey-5"
             v-for="link in adminLinks"
