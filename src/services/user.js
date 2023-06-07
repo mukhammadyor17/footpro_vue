@@ -21,6 +21,9 @@ const UserService = {
   getUserStadium() {
     return api.get("/UserStadium/GetAll");
   },
+  deleteUserStadium(id) {
+    return api.delete(`/UserStadium/Delete?id=${id}`);
+  },
 };
 
 export default UserService;

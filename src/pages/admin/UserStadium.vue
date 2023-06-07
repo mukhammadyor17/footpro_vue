@@ -46,7 +46,9 @@ const showRemoveConfirm = (row) => {
   isRemoveConfirmOpen.value = !isRemoveConfirmOpen.value;
 };
 
-const removeHandler = () => {
-  console.log(userStdId.value);
+const removeHandler = async () => {
+  await userStore.deleteUserStadium(userStdId.value);
+  await userStore.getUSerStadium();
+  isRemoveConfirmOpen.value = false;
 };
 </script>
