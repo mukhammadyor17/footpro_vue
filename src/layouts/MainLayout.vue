@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh LpR lFf">
+  <q-layout view="hHh LpR lfr">
     <q-header bordered class="bg-white text-green-5">
       <q-toolbar class="justify-between q-px-lg">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
@@ -135,7 +135,7 @@ function logoutHandler() {
 
 const leftDrawerOpen = ref(true);
 onMounted(() => {
-  if (window.screen.width <= 1023) {
+  if (window.screen.width < 1023) {
     leftDrawerOpen.value = false;
   }
 });
