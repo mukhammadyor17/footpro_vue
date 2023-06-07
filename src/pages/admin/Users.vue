@@ -10,8 +10,25 @@
         :column="col"
         :hideDeleteIcon="true"
         @showEditModal="showEditModal"
-        @changeUserStatus="changeUserStatus"
-      />
+      >
+        <template v-slot:body-cell-isBlocked="{ row }">
+          <td>
+            <div class="flex justify-center no-wrap">
+              <q-checkbox
+                color="green-5"
+                v-model="row.isBlocked"
+                @update:model-value="
+                  (value, e) =>
+                    changeUserStatus({
+                      isBlocked: value,
+                      userId: row.id,
+                    })
+                "
+              />
+            </div>
+          </td>
+        </template>
+      </base-table>
     </main-card>
     <edit-modal v-model="isEditModalOpen" @updateHandler="updateUser">
       <template v-slot:body>
@@ -38,7 +55,7 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { useUserStore } from "src/stores/user";
-import { userColumn, userStadiumColumn } from "src/constants/columns.js";
+import { userColumn } from "src/constants/columns.js";
 import MainCard from "src/components/ui/MainCard.vue";
 import BaseTable from "src/components/table/BaseTable.vue";
 import EditModal from "src/components/modal/EditModal.vue";

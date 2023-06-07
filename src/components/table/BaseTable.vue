@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-for-template-key-on-child -->
 <template>
   <q-table
     :rows="row"
@@ -9,6 +10,9 @@
     class="rounded"
     :pagination="{ rowsPerPage: 0 }"
   >
+    <template v-for="(_, slot) of $slots" v-slot:[slot]="scope">
+      <slot :name="slot" v-bind="scope" />
+    </template>
     <template v-slot:body-cell-actions="{ row }">
       <td>
         <div class="flex justify-end no-wrap">
@@ -28,20 +32,6 @@
             color="red-5"
             @click="$emit('showRemoveConfirm', row)"
             v-if="!hideDeleteIcon"
-          />
-        </div>
-      </td>
-    </template>
-    <template v-slot:body-cell-isBlocked="{ row }">
-      <td>
-        <div class="flex justify-center no-wrap">
-          <q-checkbox
-            color="green-5"
-            v-model="row.isBlocked"
-            @update:model-value="
-              (value, e) =>
-                $emit('changeUserStatus', { isBlocked: value, userId: row.id })
-            "
           />
         </div>
       </td>

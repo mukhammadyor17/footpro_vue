@@ -1,11 +1,5 @@
 export const userColumn = [
   {
-    name: "username",
-    label: "User name",
-    field: "username",
-    align: "left",
-  },
-  {
     name: "email",
     label: "Email",
     field: "email",

@@ -74,7 +74,7 @@
           v-model="userStadium.userId"
           :options="userStore.users"
           label="User"
-          :option-label="(item) => item.username"
+          :option-label="(item) => item.email"
           :option-value="(item) => item.id"
           map-options
           emit-value

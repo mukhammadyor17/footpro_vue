@@ -9,7 +9,14 @@
         :row="userStore.userStadium"
         :hideEditIcon="true"
         @showRemoveConfirm="showRemoveConfirm"
-      />
+      >
+        <template v-slot:body-cell-userId="{ row }">
+          <q-td> {{ row.userDetail.email }}</q-td>
+        </template>
+        <template v-slot:body-cell-stadiumId="{ row }">
+          <q-td> {{ row.stadiumDetail.name }}</q-td>
+        </template>
+      </base-table>
     </main-card>
     <remove-confirm
       v-model="isRemoveConfirmOpen"
@@ -19,7 +26,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import { useUserStore } from "src/stores/user";
 import { userStadiumColumn } from "src/constants/columns.js";
 import MainCard from "src/components/ui/MainCard.vue";
