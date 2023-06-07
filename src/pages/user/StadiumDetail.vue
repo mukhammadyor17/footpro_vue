@@ -87,6 +87,14 @@
           height="200px"
         />
       </div>
+      <page-title> Stadium Galley </page-title>
+      <q-img
+        class="rounded-xs q-mt-sm q-mb-md"
+        fit="cover"
+        src="/src/assets/map.png"
+        width="100%"
+        height="400px"
+      />
     </main-card>
   </q-page>
 </template>
