@@ -46,6 +46,14 @@
   border-radius: 36px;
 }
 
+.grid {
+  display: grid;
+}
+
+.grid-col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
 .gap-2 {
   gap: 8px;
 }
@@ -81,5 +89,10 @@ a {
 
 .max-w-450 {
   max-width: 450px !important;
+  width: 100%;
+}
+
+.max-w-1000 {
+  max-width: 1024px !important;
   width: 100%;
 }
