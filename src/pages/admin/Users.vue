@@ -20,8 +20,8 @@
                 @update:model-value="
                   (value, e) =>
                     changeUserStatus({
-                      isBlocked: value,
                       userId: row.id,
+                      isLocked: value,
                     })
                 "
               />
@@ -64,7 +64,6 @@ import PageTitle from "src/components/ui/PageTitle.vue";
 const col = userColumn;
 const userStore = useUserStore();
 userStore.getUsers();
-userStore.getUSerStadium();
 
 let user = reactive({
   id: "",
@@ -87,7 +86,8 @@ const updateUser = async () => {
   isEditModalOpen.value = false;
 };
 
-const changeUserStatus = (row) => {
-  console.log(row);
+const changeUserStatus = async (row) => {
+  await userStore.changeUserStatus(row);
+  await userStore.getUsers();
 };
 </script>

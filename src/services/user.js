@@ -12,11 +12,8 @@ const UserService = {
       `/Auth/UpdateUser/?userId=${id}&email=${email}&displayName=${displayName}`
     );
   },
-  block(id) {
-    return api.get("/Auth/LockUser");
-  },
-  unBlock(id) {
-    return api.get("/Auth/UnLockUser");
+  userStatus({ userId, isLocked }) {
+    return api.post(`/Auth/UserStatus/?userId=${userId}&isLocked=${isLocked}`);
   },
   createUserStadium(payload) {
     return api.post("/UserStadium/Create", payload);

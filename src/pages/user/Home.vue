@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md">
     <main-card class="q-mb-md">
-      <page-title> Home page </page-title>
+      <page-title> Top 10 more free stadiums </page-title>
     </main-card>
     <main-card v-if="stadiumStore.stadium">
       <base-table :column="col" :row="stadiumStore.stadium">

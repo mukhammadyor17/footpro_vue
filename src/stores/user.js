@@ -52,5 +52,14 @@ export const useUserStore = defineStore("user", {
         console.error(error);
       }
     },
+    async changeUserStatus(payload) {
+      try {
+        const response = await UserService.userStatus(payload);
+        notify.show("Success", "positive");
+      } catch (error) {
+        notify.show("Error", "negative");
+        console.error(error);
+      }
+    },
   },
 });
