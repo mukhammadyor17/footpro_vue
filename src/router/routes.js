@@ -39,6 +39,10 @@ const routes = [
         path: "create",
         component: () => import("pages/admin/Create.vue"),
       },
+      {
+        path: "schedule",
+        component: () => import("pages/admin/Schedule.vue"),
+      },
     ],
   },
   {

@@ -107,7 +107,7 @@ const adminLinks = [
     name: "Мой Стадион",
   },
   {
-    path: "/create",
+    path: "/schedule",
     name: "Расписание",
   },
 ];
