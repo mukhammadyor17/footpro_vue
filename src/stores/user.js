@@ -7,7 +7,6 @@ export const useUserStore = defineStore("user", {
     users: null,
     userStadium: null,
   }),
-  getters: {},
   actions: {
     async getUsers() {
       try {

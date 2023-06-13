@@ -5,14 +5,14 @@ Notify.setDefaults({
   timeout: 2500,
   textColor: "white",
   color: "green",
-  actions: [{ icon: "close", color: "white" }]
+  actions: [{ icon: "close", color: "white" }],
 });
 
 export const notify = {
   show(message, type = "positive") {
     Notify.create({
       message: message,
-      type: type
+      type: type,
     });
-  }
+  },
 };

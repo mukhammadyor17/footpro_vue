@@ -4,9 +4,8 @@ import StadiumService from "src/services/stadium";
 
 export const useStadiumStore = defineStore("stadium", {
   state: () => ({
-    stadium: null
+    stadium: null,
   }),
-  getters: {},
   actions: {
     async getStadium() {
       try {
@@ -42,6 +41,6 @@ export const useStadiumStore = defineStore("stadium", {
         notify.show("Error", "negative");
         console.error(error);
       }
-    }
-  }
+    },
+  },
 });
