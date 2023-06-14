@@ -4,11 +4,11 @@ import router from "src/router";
 import { notify } from "src/boot/notify";
 
 const api = axios.create({
-  baseURL: "https://footprotest-001-site1.htempurl.com",
+  baseURL: "http://footpro-001-site1.gtempurl.com",
   headers: {
     "Content-Type": "application/json",
-    Accept: "application/json"
-  }
+    Accept: "application/json",
+  },
 });
 
 api.interceptors.request.use(
