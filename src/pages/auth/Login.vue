@@ -25,8 +25,15 @@
         dense
         placeholder="Password"
         v-model="password"
+        @keyup.enter="loginHandler"
       />
-      <q-btn color="green-5" @click="loginHandler" no-caps class="full-width">
+      <q-btn
+        no-caps
+        color="green-5"
+        class="full-width"
+        @click="loginHandler"
+        :loading="authStore.isLoading"
+      >
         Войти
       </q-btn>
     </div>

@@ -8,10 +8,11 @@ import router from "src/router";
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
+    isLoading: false,
   }),
-  getters: {},
   actions: {
     async login(payload) {
+      this.isLoading = true;
       try {
         const response = await AuthService.login(payload);
         this.user = response.data;
@@ -22,6 +23,8 @@ export const useAuthStore = defineStore("auth", {
       } catch (error) {
         notify.show("Ошибка при авторизации!", "negative");
         console.error(error);
+      } finally {
+        this.isLoading = false;
       }
     },
     logout() {

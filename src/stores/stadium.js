@@ -6,6 +6,13 @@ export const useStadiumStore = defineStore("stadium", {
   state: () => ({
     stadium: null,
   }),
+  getters: {
+    updatedStadiums: (state) =>
+      state.stadium?.map((item) => ({
+        ...item,
+        percentage: Math.round(Math.random() * 100),
+      })),
+  },
   actions: {
     async getStadium() {
       try {

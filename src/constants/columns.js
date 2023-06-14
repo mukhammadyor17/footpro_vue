@@ -33,6 +33,13 @@ export const stadiumColumn = [
     align: "left",
   },
   {
+    name: "percentage",
+    label: "Занятость",
+    field: "percentage",
+    align: "center",
+    format: (n) => `${n} %`,
+  },
+  {
     name: "actions",
     label: "Actions",
     field: "actions",

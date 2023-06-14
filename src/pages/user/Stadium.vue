@@ -4,7 +4,7 @@
       <page-title> All stadiums </page-title>
     </main-card>
     <main-card v-if="stadiumStore.stadium">
-      <base-table :column="col" :row="stadiumStore.stadium">
+      <base-table :column="col" :row="stadiumStore.updatedStadiums">
         <template v-slot:body-cell-name="{ row }">
           <q-td>
             <router-link :to="`/stadium/${row.id}`" class="text-black">
@@ -24,7 +24,7 @@ import PageTitle from "src/components/ui/PageTitle.vue";
 import { stadiumColumn } from "src/constants/columns";
 import { useStadiumStore } from "src/stores/stadium";
 
-const col = stadiumColumn.slice(0, 2);
+const col = stadiumColumn.slice(0, -1);
 const stadiumStore = useStadiumStore();
 stadiumStore.getStadium();
 </script>
