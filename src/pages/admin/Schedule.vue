@@ -109,16 +109,17 @@
           v-model="event.description"
         />
       </div>
-      <div class="q-mt-md flex justify-end">
+      <div class="q-mt-md flex justify-end" @click="creeateSchedule">
         <q-btn no-caps color="green-5"> Create </q-btn>
       </div>
+      {{ event }}
     </main-card>
   </q-page>
 </template>
 
 <script setup>
 import MainCard from "src/components/ui/MainCard.vue";
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
 import { useUserStore } from "src/stores/user";
 import { useStadiumStore } from "src/stores/stadium";
 import PageTitle from "src/components/ui/PageTitle.vue";
@@ -126,12 +127,14 @@ import PageTitle from "src/components/ui/PageTitle.vue";
 const userStore = useUserStore();
 const stadiumStore = useStadiumStore();
 
-let date = ref("2019-02-01 12:44");
-
 let event = reactive({
   stadiumId: null,
   description: "description",
   from: "2019-02-01 12:44",
   to: "2019-02-01 12:44",
 });
+
+const createSchedule = async () => {
+  await stadiumStore.createSchedule({ ...event });
+};
 </script>

@@ -12,7 +12,10 @@ const StadiumService = {
   },
   delete(params) {
     return api.delete("/Stadium/Delete", { params });
-  }
+  },
+  createSchedule(payload) {
+    return api.post("/StadiumSchedule/Create", payload);
+  },
 };
 
 export default StadiumService;

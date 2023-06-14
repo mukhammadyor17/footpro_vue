@@ -42,5 +42,13 @@ export const useStadiumStore = defineStore("stadium", {
         console.error(error);
       }
     },
+    async createSchedule(payload) {
+      try {
+        const response = await StadiumService.createSchedule(payload);
+        notify.show("Success", "positive");
+      } catch (error) {
+        notify.show("Error", "negative");
+      }
+    },
   },
 });
