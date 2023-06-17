@@ -9,7 +9,7 @@
           <q-td>
             <router-link
               :to="`/stadium/${row.id}`"
-              class="text-black full-width"
+              class="text-black full-width block"
             >
               {{ row.name }}
             </router-link>
@@ -31,5 +31,3 @@ const col = stadiumColumn.slice(0, -1);
 const stadiumStore = useStadiumStore();
 stadiumStore.getStadium();
 </script>
-
-<style lang="scss" scoped></style>

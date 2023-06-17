@@ -7,7 +7,10 @@
       <base-table :column="col" :row="stadiumStore.updatedStadiums">
         <template v-slot:body-cell-name="{ row }">
           <q-td>
-            <router-link :to="`/stadium/${row.id}`" class="text-black">
+            <router-link
+              :to="`/stadium/${row.id}`"
+              class="text-black block full-width"
+            >
               {{ row.name }}
             </router-link>
           </q-td>
